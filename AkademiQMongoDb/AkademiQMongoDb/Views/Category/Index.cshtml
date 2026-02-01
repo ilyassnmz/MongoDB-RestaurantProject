@@ -1,0 +1,36 @@
+﻿@using AkademiQMongoDb.DTOs.CategoryDtos
+@model List<ResultCategoryDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<h1>Kategoriler</h1>
+
+<table class="table table-hover">
+
+    <tr>
+
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>İşlemler</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>
+                <a href="/Category/DeleteCategory/@item.Id" class="btn btn-outline-danger">Sil</a>
+                <a href="/Category/UpdateCategory/@item.Id" class="btn btn-outline-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+<a href="/Category/CreateCategory/" class="btn btn-outline-dark">Yeni Kategori Oluştur</a>

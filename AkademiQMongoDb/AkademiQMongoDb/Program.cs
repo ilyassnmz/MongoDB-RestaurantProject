@@ -1,6 +1,20 @@
+using AkademiQMongoDb.Services.CategoryServices;
+using AkademiQMongoDb.Settings;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddSingleton<IDatabaseSettings>(sp=>
+{
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
