@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard Layout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="flex h-full w-full flex-1">
+<!-- SideNavBar -->
+<aside class="flex w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex h-full min-h-0 flex-col justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3 py-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-10" data-alt="Abstract blue geometric logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWxxP9eHwc0SevhcYfSxOMvFt_DdXPE5FsJIC8lxouie584KHDvEucXGKI5d-52r-UmwG3FuyWTn3vqw_VDh--oK0-pOPXkFavCNkjZCrrJHI6i7j2F1ei5u6oSN8PSaddQtxtVayl4QOqDObcOBZ8iPaJtOcAUQoe-HzxPuwhiWtS7BUTWDz4MEUTaUeKNl5c7-_MpgXXqwnRB-fKB5h7mz1XM5lGbL3Nm9Mro8Y5BOcuMXMblIj76KlcT0nkvRXnMbV413zVLn0");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-bold leading-normal">Project Name</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">.Net Project</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined fill">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-medium leading-normal">Users</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+</div>
+</aside>
+<main class="flex flex-1 flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 px-10 py-3 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-8">
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Dashboard</h2>
+<label class="relative flex items-center min-w-40 h-10 max-w-64">
+<span class="material-symbols-outlined absolute left-3 text-gray-500 dark:text-gray-400">search</span>
+<input class="form-input w-full rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-gray-100 dark:bg-white/10 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 pl-10 text-base font-normal leading-normal" placeholder="Search..." value=""/>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Portrait of a smiling user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBToh6xtSuH-38SGeKwGed6Z--o28TkkJg1hBiqtDso_r6zhF3Yd4X4veLeNATVy_cHsoj8QKsJ8WR_tGJYgpWZIWVYp6qvNMLJErvmywJAqKjwhafn_JSbIJafm-aQ4FvTaewBq3yjXyB83rlt6JawgelLb4VUDJqLRuCHHr9cMz1dyHY-qCktCouREhSKRjzfKC5vdBLklafGXRCc2xqYGYzsqBjjuZRmwfOAB4T4Zv9zAjXv26n8sfT4qalCxEBRMVcbNZY6tBI");'></div>
+<div class="flex-col hidden sm:flex">
+<p class="text-gray-900 dark:text-white text-sm font-semibold">John Doe</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs">Admin</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex-1 p-8 overflow-y-auto">
+<!-- Stats -->
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Overview</h3>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50">
+<p class="text-gray-600 dark:text-gray-400 text-base font-medium leading-normal">Total Revenue</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">$125,430</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50">
+<p class="text-gray-600 dark:text-gray-400 text-base font-medium leading-normal">New Customers</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">1,204</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50">
+<p class="text-gray-600 dark:text-gray-400 text-base font-medium leading-normal">Active Subscriptions</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">312</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50">
+<p class="text-gray-600 dark:text-gray-400 text-base font-medium leading-normal">Pending Orders</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">27</p>
+</div>
+</div>
+<!-- Charts -->
+<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+<div class="lg:col-span-2 flex min-w-72 flex-1 flex-col gap-2 rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-gray-900/50">
+<p class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal">Sales Analytics</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight truncate">$45,231.89</p>
+<div class="flex gap-1">
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Last 30 Days</p>
+<p class="text-green-600 dark:text-green-500 text-base font-medium leading-normal">+20.1%</p>
+</div>
+<div class="flex min-h-[220px] flex-1 flex-col gap-8 py-4">
+<svg fill="none" height="100%" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#paint0_linear_chart)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#137fec" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_chart" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#137fec" stop-opacity="0.3"></stop>
+<stop offset="1" stop-color="#137fec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 p-6 bg-white dark:bg-gray-900/50">
+<h3 class="text-gray-800 dark:text-gray-200 text-base font-medium leading-normal">Top Products</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm flex-1">Product A</p>
+<p class="text-gray-800 dark:text-gray-200 text-sm font-semibold">1,230 sales</p>
+</div>
+<div class="flex items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm flex-1">Product B</p>
+<p class="text-gray-800 dark:text-gray-200 text-sm font-semibold">980 sales</p>
+</div>
+<div class="flex items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm flex-1">Product C</p>
+<p class="text-gray-800 dark:text-gray-200 text-sm font-semibold">750 sales</p>
+</div>
+<div class="flex items-center">
+<p class="text-gray-600 dark:text-gray-400 text-sm flex-1">Product D</p>
+<p class="text-gray-800 dark:text-gray-200 text-sm font-semibold">510 sales</p>
+</div>
+</div>
+</div>
+</div>
+<!-- SectionHeader & Table -->
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pt-8 pb-4">Recent Activity</h2>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50">
+<table class="w-full text-left text-sm">
+<thead class="border-b border-gray-200 dark:border-gray-800 text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50 dark:bg-white/5">
+<tr>
+<th class="px-6 py-3 font-medium" scope="col">Order ID</th>
+<th class="px-6 py-3 font-medium" scope="col">Customer</th>
+<th class="px-6 py-3 font-medium" scope="col">Date</th>
+<th class="px-6 py-3 font-medium" scope="col">Status</th>
+<th class="px-6 py-3 font-medium" scope="col">Amount</th>
+</tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr class="border-b border-gray-200 dark:border-gray-800">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">#12543</td>
+<td class="px-6 py-4">Liam Johnson</td>
+<td class="px-6 py-4">2023-10-26</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">Completed</span></td>
+<td class="px-6 py-4 font-medium">$250.00</td>
+</tr>
+<tr class="border-b border-gray-200 dark:border-gray-800">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">#12542</td>
+<td class="px-6 py-4">Olivia Smith</td>
+<td class="px-6 py-4">2023-10-25</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-300">Pending</span></td>
+<td class="px-6 py-4 font-medium">$150.75</td>
+</tr>
+<tr class="border-b border-gray-200 dark:border-gray-800">
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">#12541</td>
+<td class="px-6 py-4">Noah Williams</td>
+<td class="px-6 py-4">2023-10-25</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-300">Shipped</span></td>
+<td class="px-6 py-4 font-medium">$350.00</td>
+</tr>
+<tr>
+<td class="px-6 py-4 font-medium text-gray-900 dark:text-white">#12540</td>
+<td class="px-6 py-4">Emma Brown</td>
+<td class="px-6 py-4">2023-10-24</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">Completed</span></td>
+<td class="px-6 py-4 font-medium">$75.50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

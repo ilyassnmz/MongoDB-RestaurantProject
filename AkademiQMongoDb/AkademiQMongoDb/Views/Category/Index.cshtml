@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
 
@@ -25,7 +25,7 @@
             <th>@count</th>
             <td>@item.Name</td>
             <td>
-                <a href="/Category/DeleteCategory/@item.Id" class="btn btn-outline-danger">Sil</a>
+                <a href="/Category/DeleteCategory/@item.Id" onclick="return confirm('Bu öğeyi silmek istediğinize emin misiniz ?')" class="btn btn-outline-danger">Sil</a>
                 <a href="/Category/UpdateCategory/@item.Id" class="btn btn-outline-info">Güncelle</a>
             </td>
         </tr>

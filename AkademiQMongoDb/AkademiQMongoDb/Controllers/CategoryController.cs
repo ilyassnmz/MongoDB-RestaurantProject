@@ -42,5 +42,11 @@ namespace AkademiQMongoDb.Controllers
             await _categoryService.UpdateAsync(categoryDto);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> DeleteCategory(string id)
+        {
+            await _categoryService.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
     }
 }
