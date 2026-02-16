@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HueC3PlXLeU=",
+  "dgSpecHash": "aqcqMYg22eg=",
   "success": true,
   "projectFilePath": "C:\\Users\\lunap\\OneDrive\\Masaüstü\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\AkademiQMongoDb.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,8 @@
     "C:\\Users\\lunap\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\lunap\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\lunap\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\lunap\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\lunap\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
     "C:\\Users\\lunap\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\lunap\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\lunap\\.nuget\\packages\\microsoft.build\\17.11.48\\microsoft.build.17.11.48.nupkg.sha512",
