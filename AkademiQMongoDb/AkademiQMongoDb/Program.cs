@@ -1,4 +1,6 @@
 using AkademiQMongoDb.Services.CategoryServices;
+using AkademiQMongoDb.Services.CategoryServices;
+using AkademiQMongoDb.Services.ProductServices;
 using AkademiQMongoDb.Settings;
 using Microsoft.Extensions.Options;
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddSingleton<IDatabaseSettings>(sp=>
 {
@@ -33,6 +36,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
 
 app.MapControllerRoute(
     name: "default",

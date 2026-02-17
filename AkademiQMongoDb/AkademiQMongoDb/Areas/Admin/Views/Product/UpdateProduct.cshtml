@@ -1,0 +1,40 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Ürün Güncelle</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Ürün Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span class="text-danger" asp-validation-for="Name"></span>
+    <br />
+
+    <label>Ürün Açıklaması</label>
+    <textarea type="text" asp-for="Description" class="form-control" rows="5"></textarea>
+    <span class="text-danger" asp-validation-for="Description"></span>
+    <br />
+
+    <label>Görsel Url</label>
+    <input type="text" asp-for="ImageUrl" class="form-control" />
+    <span class="text-danger" asp-validation-for="ImageUrl"></span>
+    <br />
+
+    <label>Fiyat</label>
+    <input type="text" asp-for="Price" class="form-control" />
+    <span class="text-danger" asp-validation-for="Price"></span>
+    <br />
+
+    <label>Kategori</label>
+    <select asp-for="CategoryName" class="form-control" asp-items="@ViewBag.categories">
+        <option selected disabled>Kategori Seçiniz</option>
+    </select>
+    <span class="text-danger" asp-validation-for="CategoryName"></span>
+    <br />
+
+    <button class="btn btn-outline-dark">Güncelle</button>
+</form>

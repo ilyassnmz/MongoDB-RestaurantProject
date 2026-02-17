@@ -14,10 +14,13 @@ namespace AkademiQMongoDb.Services.ProductServices
         public ProductService(IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
-            var database = client.GetDatabase(databaseSettings.ConnectionString);
+
+            // ✔ DOĞRU: DatabaseName kullanılmalı
+            var database = client.GetDatabase(databaseSettings.DatabaseName);
+
+            // ✔ Doğru collection adı
             _productCollection = database.GetCollection<Product>(databaseSettings.ProductCollectionName);
         }
-
 
         public async Task CreateAsync(CreateProductDto productDto)
         {
@@ -38,7 +41,7 @@ namespace AkademiQMongoDb.Services.ProductServices
 
         public async Task<UpdateProductDto> GetByIdAsync(string id)
         {
-            var product = await _productCollection.Find(x=>x.Id==id).FirstOrDefaultAsync();
+            var product = await _productCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
             return product.Adapt<UpdateProductDto>();
         }

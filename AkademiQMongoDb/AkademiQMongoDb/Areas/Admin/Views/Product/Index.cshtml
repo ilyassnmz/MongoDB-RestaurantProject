@@ -1,0 +1,42 @@
+﻿@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Ürünler</h1>
+
+<table class="table table-hover">
+
+    <tr>
+
+        <th>#</th>
+        <th>Görsel</th>
+        <th>Ürün Adı</th>
+        <th>Açıklama</th>
+        <th>Fiyat</th>
+        <th>Kategori</th>
+        <th>İşlemler</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.ImageUrl" style="width75px;height:75px"/></td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price $</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="/Admin/Product/DeleteProduct/@item.Id" onclick="return confirm('Bu öğeyi silmek istediğinize emin misiniz ?')" class="btn btn-outline-danger">Sil</a>
+                <a href="/Admin/Product/UpdateProduct/@item.Id" class="btn btn-outline-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+<a href="/Admin/Product/CreateProduct/" class="btn btn-outline-dark">Yeni Ürün Oluştur</a>
