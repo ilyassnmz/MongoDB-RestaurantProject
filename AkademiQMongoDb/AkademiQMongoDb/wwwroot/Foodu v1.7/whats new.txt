@@ -1,0 +1,6 @@
+What's new?
+
+01. Added RTL Version
+
+How to use RTL version?
+Ans: You just need to add the rtl class on the body
