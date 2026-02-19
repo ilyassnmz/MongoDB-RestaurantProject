@@ -190,7 +190,6 @@ wwwroot\Foodu v1.7\source\assets\img\portfolio\3.jpg
 wwwroot\Foodu v1.7\source\assets\img\portfolio\4.jpg
 wwwroot\Foodu v1.7\source\assets\img\portfolio\5.jpg
 wwwroot\Foodu v1.7\source\assets\img\portfolio\6.jpg
-wwwroot\Foodu v1.7\source\assets\img\reservation.jpg
 wwwroot\Foodu v1.7\source\assets\img\service\1.jpg
 wwwroot\Foodu v1.7\source\assets\img\service\2.jpg
 wwwroot\Foodu v1.7\source\assets\img\service\3.jpg
@@ -404,3 +403,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\Foodu v1.7\source\assets\img\reservation.jpg

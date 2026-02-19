@@ -12,9 +12,7 @@ namespace AkademiQMongoDb.ViewComponents.DefaultComponents
             _productService = productService;
         }
 
-
-
-        public async Task<IViewComponentResult> Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var products = await _productService.GetAllAsync();
             return View(products);

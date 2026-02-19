@@ -1,4 +1,135 @@
-﻿
+﻿@model List<ResultProductDto>
 @*
     Default Products
 *@
+
+<!-- Start Menu -->
+<div class="menu-style-five-area default-padding bg-cover" style="background-image: url(/Foodu v1.7/source/assets/img/shape/3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6">
+                <div class="thumb-style-two">
+                    <div class="fun-fact-style-two mb-40">
+                        <div class="icon">
+                            <img src="/Foodu v1.7/source/assets/img/icon/2.png" alt="Resim Bulunamadı">
+                        </div>
+                        <div class="fun-fact">
+                            <div class="counter">
+                                <div class="timer" data-to="500" data-speed="2000">500</div>
+                                <div class="operator">+</div>
+                            </div>
+                            <span class="medium">Menü ve Yemek Çeşidi</span>
+                        </div>
+                    </div>
+                    <img class="wow fadeInLeft" src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Resim Bulunamadı">
+                </div>
+            </div>
+            <div class="col-xl-6 offset-xl-1 col-lg-6">
+                <h4 class="sub-heading">Lezzetlerimiz</h4>
+                <h2 class="title split-text">Öne Çıkan Menüler</h2>
+                <div class="food-menu-style-five-items mt-65 wow fadeInUp">
+
+                    <ul class="nav nav-tabs food-menu-five-navs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab_1" data-bs-toggle="tab" data-bs-target="#tabs_1" type="button" role="tab" aria-controls="tabs_1" aria-selected="true">
+                                Ana Yemekler
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab_2" data-bs-toggle="tab" data-bs-target="#tabs_2" type="button" role="tab" aria-controls="tabs_2" aria-selected="false">
+                                Tatlılar
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab_3" data-bs-toggle="tab" data-bs-target="#tabs_3" type="button" role="tab" aria-controls="tabs_3" aria-selected="false">
+                                Deniz Ürünleri
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab_4" data-bs-toggle="tab" data-bs-target="#tabs_4" type="button" role="tab" aria-controls="tabs_4" aria-selected="false">
+                                İçecekler
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tabs_1" role="tabpanel" aria-labelledby="tab_1">
+                            <ul class="meal-type">
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Izgara Somon</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$42</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>Taze somon / sebzeler / özel sos</p>
+                                            </div>
+                                            <div class="right">
+                                                <p>Ekstra sos dahil</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Antrikot</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$58</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>Izgara antrikot / patates / sebze</p>
+                                            </div>
+                                            <div class="right">
+                                                <p>Özel sos seçeneği</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tabs_2" role="tabpanel" aria-labelledby="tab_2">
+                            <ul class="meal-type">
+                                <li>Tam</li>
+                            </ul>
+                            <ul class="meal-items style-two">
+                                <li>
+                                    <div class="content">
+                                        <div class="top">
+                                            <div class="title">
+                                                <h4><a href="shop-single.html">Çikolatalı Sufle</a></h4>
+                                            </div>
+                                            <div class="price">
+                                                <span>$22</span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="left">
+                                                <p>Sıcak çikolata / vanilyalı dondurma</p>
+                                            </div>
+                                            <div class="right">
+                                                <p>Ekstra çikolata sos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Menu -->
