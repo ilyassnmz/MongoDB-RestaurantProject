@@ -1,26 +1,530 @@
-﻿
-@*
-    Admin Layout Sidebar
+﻿@*
+    Admin Layout Navbar
 *@
 
-<header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 px-10 py-3 bg-white dark:bg-background-dark">
-    <div class="flex items-center gap-8">
-        <h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Dashboard</h2>
-        <label class="relative flex items-center min-w-40 h-10 max-w-64">
-            <span class="material-symbols-outlined absolute left-3 text-gray-500 dark:text-gray-400">search</span>
-            <input class="form-input w-full rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-gray-100 dark:bg-white/10 h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 pl-10 text-base font-normal leading-normal" placeholder="Search..." value="" />
-        </label>
+<style>
+    :root {
+        --foodu-red: #EB0029;
+        --foodu-red-dark: #d40026;
+        --foodu-red-light: rgba(235, 0, 41, 0.1);
+        --foodu-dark: #072b31;
+        --foodu-gray: #EBE9E6;
+        --shadow-sm: 0 2px 8px rgba(235, 0, 41, 0.08);
+        --shadow-md: 0 4px 16px rgba(235, 0, 41, 0.12);
+        --shadow-lg: 0 8px 24px rgba(235, 0, 41, 0.15);
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(235, 0, 41, 0.1);
+        padding: 0.75rem 2.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .dark .navbar {
+        background: rgba(26, 30, 36, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(235, 0, 41, 0.2);
+    }
+
+    .navbar.scrolled {
+        padding: 0.5rem 2.5rem;
+        box-shadow: var(--shadow-md);
+    }
+
+    .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .navbar-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--foodu-dark);
+        margin: 0;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding-bottom: 4px;
+    }
+
+    .dark .navbar-title {
+        color: white;
+    }
+
+    .navbar-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #EB0029, transparent);
+        border-radius: 3px;
+        transition: width 0.3s ease;
+    }
+
+    .navbar-title:hover::after {
+        width: 100%;
+    }
+
+    .search-wrapper {
+        position: relative;
+        min-width: 240px;
+        max-width: 320px;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        font-size: 20px;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .dark .search-icon {
+        color: #6b7280;
+    }
+
+    .search-input {
+        width: 100%;
+        height: 42px;
+        padding: 0 1rem 0 2.75rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 15px;
+        color: var(--foodu-dark);
+        background: #f1f5f9;
+        border: 2px solid transparent;
+        border-radius: 40px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .dark .search-input {
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+    }
+
+    .search-input:hover {
+        background: #e9eef3;
+    }
+
+    .dark .search-input:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .search-input:focus {
+        background: white;
+        border-color: #EB0029;
+        box-shadow: 0 0 0 4px rgba(235, 0, 41, 0.1);
+        padding-left: 2.75rem;
+    }
+
+    .dark .search-input:focus {
+        background: #2a3038;
+        border-color: #EB0029;
+        box-shadow: 0 0 0 4px rgba(235, 0, 41, 0.2);
+    }
+
+    .search-input:focus + .search-icon {
+        color: #EB0029;
+    }
+
+    .search-input::placeholder {
+        color: #94a3b8;
+        font-weight: 400;
+    }
+
+    .dark .search-input::placeholder {
+        color: #6b7280;
+    }
+
+    .navbar-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    /* Bildirim Butonu */
+    .notification-btn {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dark .notification-btn {
+        color: #94a3b8;
+    }
+
+    .notification-btn:hover {
+        background: rgba(235, 0, 41, 0.08);
+        color: #EB0029;
+        transform: translateY(-2px);
+    }
+
+    .dark .notification-btn:hover {
+        background: rgba(235, 0, 41, 0.15);
+        color: white;
+    }
+
+    .notification-btn:active {
+        transform: translateY(0);
+    }
+
+    .notification-btn .material-symbols-outlined {
+        font-size: 24px;
+    }
+
+    .notification-badge {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 8px;
+        height: 8px;
+        background: #EB0029;
+        border-radius: 50%;
+        border: 2px solid white;
+        animation: pulse 2s infinite;
+    }
+
+    .dark .notification-badge {
+        border-color: #1e242b;
+    }
+
+    
+    /* Kullanıcı Profili */
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: transparent;
+    }
+
+        .user-profile:hover {
+            background: rgba(235, 0, 41, 0.05);
+        }
+
+    .dark .user-profile:hover {
+        background: rgba(235, 0, 41, 0.1);
+    }
+
+    .user-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #EB0029 0%, #ff6b6b 100%);
+        background-size: cover;
+        background-position: center;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .user-profile:hover .user-avatar {
+        border-color: #EB0029;
+        transform: scale(1.05);
+        box-shadow: var(--shadow-md);
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-name {
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--foodu-dark);
+        margin: 0;
+        line-height: 1.3;
+        transition: color 0.3s ease;
+    }
+
+    .dark .user-name {
+        color: white;
+    }
+
+    .user-profile:hover .user-name {
+        color: #EB0029;
+    }
+
+    .dark .user-profile:hover .user-name {
+        color: #EB0029;
+    }
+
+    .user-role {
+        font-family: 'Jost', sans-serif;
+        font-size: 11px;
+        color: #EB0029;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Dropdown Menü (opsiyonel) */
+    .user-dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: 240px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid rgba(235, 0, 41, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1001;
+    }
+
+    .dark .user-dropdown {
+        background: #1e242b;
+        border-color: rgba(235, 0, 41, 0.2);
+    }
+
+    .user-profile.active .user-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: var(--foodu-dark);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(235, 0, 41, 0.05);
+    }
+
+    .dark .dropdown-item {
+        color: white;
+        border-bottom-color: rgba(235, 0, 41, 0.1);
+    }
+
+    .dropdown-item:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(235, 0, 41, 0.05);
+        color: #EB0029;
+        padding-left: 24px;
+    }
+
+    .dark .dropdown-item:hover {
+        background: rgba(235, 0, 41, 0.1);
+        color: white;
+    }
+
+    .dropdown-item .material-symbols-outlined {
+        font-size: 20px;
+        color: #EB0029;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .navbar {
+            padding: 0.75rem 1.5rem;
+        }
+
+        .search-wrapper {
+            min-width: 180px;
+        }
+
+        .user-info {
+            display: none;
+        }
+
+        .navbar-title {
+            font-size: 1.25rem;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .search-wrapper {
+            display: none;
+        }
+    }
+
+    /* Animasyonlar */
+    @@keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .navbar {
+        animation: slideDown 0.5s ease;
+    }
+
+    /* Bildirim bildirimi için tooltip (opsiyonel) */
+    .notification-btn[data-tooltip] {
+        position: relative;
+    }
+
+        .notification-btn[data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--foodu-dark);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .notification-btn[data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: -35px;
+        }
+
+    /* Dark mode için tooltip düzenlemesi */
+    .dark .notification-btn[data-tooltip]::after {
+        background: white;
+        color: var(--foodu-dark);
+    }
+</style>
+
+<header class="navbar">
+    <div class="navbar-left">
+        <h2 class="navbar-title">Dashboard</h2>
+
+        <div class="search-wrapper">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" class="search-input" placeholder="Ara..." value="" />
+        </div>
     </div>
-    <div class="flex items-center gap-4">
-        <button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/10">
+
+    <div class="navbar-right">
+        <!-- İndirim Maili Butonu (Hızlı erişim için) -->
+        <a href="/Admin/DiscountEmail" class="notification-btn" data-tooltip="İndirim Maili Gönder" style="text-decoration: none;">
+            <span class="material-symbols-outlined">email</span>
+        </a>
+
+        <!-- Bildirim Butonu -->
+        <button class="notification-btn" data-tooltip="Bildirimler">
             <span class="material-symbols-outlined">notifications</span>
+            <span class="notification-badge"></span>
         </button>
-        <div class="flex items-center gap-3">
-            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Portrait of a smiling user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBToh6xtSuH-38SGeKwGed6Z--o28TkkJg1hBiqtDso_r6zhF3Yd4X4veLeNATVy_cHsoj8QKsJ8WR_tGJYgpWZIWVYp6qvNMLJErvmywJAqKjwhafn_JSbIJafm-aQ4FvTaewBq3yjXyB83rlt6JawgelLb4VUDJqLRuCHHr9cMz1dyHY-qCktCouREhSKRjzfKC5vdBLklafGXRCc2xqYGYzsqBjjuZRmwfOAB4T4Zv9zAjXv26n8sfT4qalCxEBRMVcbNZY6tBI");'></div>
-            <div class="flex-col hidden sm:flex">
-                <p class="text-gray-900 dark:text-white text-sm font-semibold">@ViewBag.fullName</p>
-                <p class="text-gray-500 dark:text-gray-400 text-xs">Admin</p>
+
+        <!-- Kullanıcı Profili -->
+        <div class="user-profile" onclick="toggleUserMenu()">
+            <div class="user-avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBToh6xtSuH-38SGeKwGed6Z--o28TkkJg1hBiqtDso_r6zhF3Yd4X4veLeNATVy_cHsoj8QKsJ8WR_tGJYgpWZIWVYp6qvNMLJErvmywJAqKjwhafn_JSbIJafm-aQ4FvTaewBq3yjXyB83rlt6JawgelLb4VUDJqLRuCHHr9cMz1dyHY-qCktCouREhSKRjzfKC5vdBLklafGXRCc2xqYGYzsqBjjuZRmwfOAB4T4Zv9zAjXv26n8sfT4qalCxEBRMVcbNZY6tBI");'></div>
+            <div class="user-info">
+                <p class="user-name">@ViewBag.fullName</p>
+                <p class="user-role">Admin</p>
+            </div>
+
+            <!-- Dropdown Menü (opsiyonel) -->
+            <div class="user-dropdown">
+                <a href="/Admin/Profile" class="dropdown-item">
+                    <span class="material-symbols-outlined">person</span>
+                    Profilim
+                </a>
+                <a href="/Admin/Settings" class="dropdown-item">
+                    <span class="material-symbols-outlined">settings</span>
+                    Ayarlar
+                </a>
+                <a href="/Login/Logout" class="dropdown-item">
+                    <span class="material-symbols-outlined">logout</span>
+                    Çıkış Yap
+                </a>
             </div>
         </div>
     </div>
 </header>
+
+<script>
+    // Scroll efekti
+    window.addEventListener('scroll', function() {
+        var navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Kullanıcı menüsü toggle (opsiyonel)
+    function toggleUserMenu() {
+        var profile = document.querySelector('.user-profile');
+        profile.classList.toggle('active');
+    }
+
+    // Dışarı tıklandığında menüyü kapat
+    document.addEventListener('click', function(event) {
+        var profile = document.querySelector('.user-profile');
+        var isClickInside = profile.contains(event.target);
+
+        if (!isClickInside) {
+            profile.classList.remove('active');
+        }
+    });
+
+    // Arama inputu için debounce (opsiyonel)
+    var searchTimeout;
+    document.querySelector('.search-input').addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(function() {
+            var searchTerm = e.target.value;
+            if (searchTerm.length > 2) {
+                console.log('Aranıyor:', searchTerm);
+                // AJAX ile arama yapılabilir
+            }
+        }, 500);
+    });
+
+    // Enter tuşuna basıldığında arama
+    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            var searchTerm = e.target.value;
+            if (searchTerm.trim() !== '') {
+                window.location.href = '/Admin/Search?q=' + encodeURIComponent(searchTerm);
+            }
+        }
+    });
+</script>

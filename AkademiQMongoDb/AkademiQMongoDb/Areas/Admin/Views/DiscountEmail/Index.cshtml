@@ -1,0 +1,545 @@
+﻿@model AkademiQMongoDb.Areas.Admin.ViewModels.DiscountEmailViewModel
+@{
+    ViewData["Title"] = "İndirim Maili Gönder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    :root {
+        --foodu-red: #EB0029;
+        --foodu-red-dark: #d40026;
+        --foodu-red-light: rgba(235, 0, 41, 0.1);
+        --foodu-dark: #072b31;
+        --foodu-gray: #EBE9E6;
+        --shadow-sm: 0 2px 8px rgba(235, 0, 41, 0.08);
+        --shadow-md: 0 4px 16px rgba(235, 0, 41, 0.12);
+        --shadow-lg: 0 8px 24px rgba(235, 0, 41, 0.15);
+    }
+
+    .discount-container {
+        min-height: calc(100vh - 100px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    }
+
+    .dark .discount-container {
+        background: linear-gradient(135deg, #1a1e24 0%, #14181d 100%);
+    }
+
+    .discount-card {
+        max-width: 600px;
+        width: 100%;
+        background: white;
+        border-radius: 24px;
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .discount-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(235, 0, 41, 0.2);
+        }
+
+    .dark .discount-card {
+        background: #1e242b;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .discount-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #EB0029, #ff6b6b, #EB0029);
+        background-size: 200% 100%;
+        animation: gradientMove 3s ease infinite;
+    }
+    .discount-header {
+        padding: 2rem 2rem 1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(235, 0, 41, 0.1);
+    }
+
+        .discount-header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--foodu-dark);
+            margin: 0 0 0.5rem;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+    .dark .discount-header h1 {
+        color: white;
+    }
+
+    .discount-header h1::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #EB0029, transparent);
+        border-radius: 3px;
+    }
+
+    .discount-body {
+        padding: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.75rem;
+        position: relative;
+    }
+
+    .form-label {
+        display: block;
+        font-family: 'Oswald', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--foodu-dark);
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+    }
+
+    .dark .form-label {
+        color: #e5e7eb;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 16px;
+        color: var(--foodu-dark);
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 14px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .dark .form-input {
+        background: #2a3038;
+        border-color: #3a414a;
+        color: white;
+    }
+
+    .form-input:hover {
+        border-color: #EB0029;
+    }
+
+    .form-input:focus {
+        border-color: #EB0029;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(235, 0, 41, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .dark .form-input:focus {
+        background: #2f363f;
+        box-shadow: 0 0 0 4px rgba(235, 0, 41, 0.2);
+    }
+
+    .form-input::placeholder {
+        color: #94a3b8;
+        font-size: 15px;
+    }
+
+    .dark .form-input::placeholder {
+        color: #6b7280;
+    }
+
+    .validation-message {
+        display: block;
+        color: #EB0029;
+        font-size: 13px;
+        margin-top: 0.5rem;
+        padding-left: 0.5rem;
+        font-weight: 500;
+        animation: slideIn 0.3s ease;
+    }
+
+    
+
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+
+    .checkbox-input {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        accent-color: #EB0029;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .checkbox-label {
+        margin-left: 0.75rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 15px;
+        color: #4a5568;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .dark .checkbox-label {
+        color: #cbd5e0;
+    }
+
+    .checkbox-label:hover {
+        color: #EB0029;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-primary {
+        flex: 1;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, #EB0029 0%, #ff4d4d 100%);
+        color: white;
+        font-family: 'Oswald', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+    }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d40026 0%, #EB0029 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+            .btn-primary:hover::before {
+                width: 300px;
+                height: 300px;
+            }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+    .btn-secondary {
+        flex: 1;
+        padding: 1rem 1.5rem;
+        background: white;
+        color: var(--foodu-dark);
+        font-family: 'Oswald', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid #e2e8f0;
+        border-radius: 14px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .dark .btn-secondary {
+        background: #2a3038;
+        border-color: #3a414a;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #f1f5f9;
+        border-color: #EB0029;
+        color: #EB0029;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .dark .btn-secondary:hover {
+        background: #2f363f;
+        border-color: #EB0029;
+        color: #EB0029;
+    }
+
+    .btn-secondary:active {
+        transform: translateY(0);
+    }
+
+    .alert {
+        padding: 1rem 1.25rem;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        animation: slideDown 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            border-radius: 4px 0 0 4px;
+        }
+
+    .alert-success {
+        background: rgba(16, 185, 129, 0.1);
+        color: #065f46;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+        .alert-success::before {
+            background: #10b981;
+        }
+
+    .dark .alert-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #a7f3d0;
+    }
+
+    .alert-error {
+        background: rgba(235, 0, 41, 0.1);
+        color: #991b1b;
+        border: 1px solid rgba(235, 0, 41, 0.2);
+    }
+
+        .alert-error::before {
+            background: #EB0029;
+        }
+
+    .dark .alert-error {
+        background: rgba(235, 0, 41, 0.2);
+        color: #fecaca;
+    }
+
+    
+
+    /* İstatistik kartları (eğer eklemek istersen) */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 16px;
+        padding: 1.25rem;
+        text-align: center;
+        border: 1px solid rgba(235, 0, 41, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .dark .stat-card {
+        background: linear-gradient(135deg, #2a3038 0%, #1f2937 100%);
+        border-color: rgba(235, 0, 41, 0.2);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        border-color: #EB0029;
+        box-shadow: var(--shadow-md);
+    }
+
+    .stat-value {
+        font-family: 'Oswald', sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        color: #EB0029;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .dark .stat-label {
+        color: #94a3b8;
+    }
+
+    /* Responsive düzenlemeler */
+    @@media (max-width: 640px) {
+        .discount-header h1 {
+            font-size: 28px;
+        }
+
+        .button-group {
+            flex-direction: column;
+        }
+
+        .btn-primary, .btn-secondary {
+            width: 100%;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Loading animasyonu (opsiyonel) */
+    .btn-primary.loading {
+        position: relative;
+        color: transparent;
+    }
+
+        .btn-primary.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid white;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spinner 0.8s linear infinite;
+        }
+
+    
+</style>
+
+<div class="discount-container">
+    <div class="discount-card">
+        <div class="discount-header">
+            <h1>İndirim Maili Gönder</h1>
+        </div>
+
+        <div class="discount-body">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    @TempData["Success"]
+                </div>
+            }
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-error">
+                    <span class="material-symbols-outlined">error</span>
+                    @TempData["Error"]
+                </div>
+            }
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">Toplam Abone</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">@ViewBag.ActiveSubscribers</div>
+                    <div class="stat-label">Aktif Abone</div>
+                </div>
+            </div>
+
+            <form asp-action="SendDiscountEmail" method="post">
+                <div class="form-group">
+                    <label asp-for="DiscountCode" class="form-label"></label>
+                    <input asp-for="DiscountCode" class="form-input" placeholder="Örnek: FOODU20" />
+                    <span asp-validation-for="DiscountCode" class="validation-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DiscountPercentage" class="form-label"></label>
+                    <input asp-for="DiscountPercentage" class="form-input" placeholder="20" type="number" min="1" max="100" />
+                    <span asp-validation-for="DiscountPercentage" class="validation-message"></span>
+                </div>
+
+                <div class="checkbox-wrapper">
+                    <input asp-for="SendToActiveOnly" class="checkbox-input" />
+                    <label asp-for="SendToActiveOnly" class="checkbox-label">
+                        Sadece aktif abonelere gönder
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        İndirim Maili Gönder
+                    </button>
+                    <a href="/Admin/Product/Index" class="btn-secondary">
+                        İptal
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Form gönderilirken butona loading efekti ekleme (opsiyonel)
+    document.querySelector('form').addEventListener('submit', function(e) {
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+    });
+
+    // Sayı input'unda min-max kontrolü
+    document.querySelector('input[type="number"]').addEventListener('input', function(e) {
+        var value = parseInt(e.target.value);
+        if (value < 1) e.target.value = 1;
+        if (value > 100) e.target.value = 100;
+    });
+
+    // Karakter sayacı (indirim kodu için opsiyonel)
+    document.querySelector('input[name="DiscountCode"]').addEventListener('input', function(e) {
+        var maxLength = 20;
+        var currentLength = e.target.value.length;
+
+        if (currentLength > maxLength) {
+            e.target.value = e.target.value.slice(0, maxLength);
+        }
+    });
+</script>

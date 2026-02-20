@@ -1,6 +1,8 @@
 using AkademiQMongoDb.Services.AdminServices;
 using AkademiQMongoDb.Services.CategoryServices;
 using AkademiQMongoDb.Services.ProductServices;
+using AkademiQMongoDb.Services.EmailServices;
+using AkademiQMongoDb.Services.SubscriberServices;
 using AkademiQMongoDb.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -12,10 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
+// EmailSettings'i yapýlandýr
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
 //Service Registration
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<ISubscriberService, SubscriberService>();
 
 builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 {

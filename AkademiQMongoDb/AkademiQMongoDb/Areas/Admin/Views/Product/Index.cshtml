@@ -1,42 +1,592 @@
 ﻿@model List<ResultProductDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Ürünler";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
 
-<h1>Ürünler</h1>
-
-<table class="table table-hover">
-
-    <tr>
-
-        <th>#</th>
-        <th>Görsel</th>
-        <th>Ürün Adı</th>
-        <th>Açıklama</th>
-        <th>Fiyat</th>
-        <th>Kategori</th>
-        <th>İşlemler</th>
-
-    </tr>
-    @foreach (var item in Model)
-    {
-        count++;
-        <tr>
-            <th>@count</th>
-            <td><img src="@item.ImageUrl" style="width75px;height:75px"/></td>
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>@item.Price ₺</td>
-            <td>@item.CategoryName</td>
-            <td>
-                <a href="/Admin/Product/DeleteProduct/@item.Id" onclick="return confirm('Bu öğeyi silmek istediğinize emin misiniz ?')" class="btn btn-outline-danger">Sil</a>
-                <a href="/Admin/Product/UpdateProduct/@item.Id" class="btn btn-outline-info">Güncelle</a>
-            </td>
-        </tr>
+<style>
+    :root {
+        --foodu-red: #EB0029;
+        --foodu-red-dark: #d40026;
+        --foodu-red-light: rgba(235, 0, 41, 0.1);
+        --foodu-dark: #072b31;
+        --foodu-gray: #EBE9E6;
+        --shadow-sm: 0 2px 8px rgba(235, 0, 41, 0.08);
+        --shadow-md: 0 4px 16px rgba(235, 0, 41, 0.12);
+        --shadow-lg: 0 8px 24px rgba(235, 0, 41, 0.15);
     }
 
+    .page-header {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(235, 0, 41, 0.05);
+        transition: all 0.3s ease;
+    }
 
-</table>
-<a href="/Admin/Product/CreateProduct/" class="btn btn-outline-dark">Yeni Ürün Oluştur</a>
+    .dark .page-header {
+        background: #1e242b;
+        border-color: rgba(235, 0, 41, 0.1);
+    }
+
+    .page-header:hover {
+        box-shadow: var(--shadow-md);
+    }
+
+    .page-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--foodu-dark);
+        margin: 0;
+        letter-spacing: 1px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .dark .page-title {
+        color: white;
+    }
+
+    .page-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #EB0029, #ff6b6b);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+    }
+
+    .page-title:hover::after {
+        width: 100%;
+    }
+
+    .btn-discount {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #EB0029 0%, #ff4d4d 100%);
+        color: white;
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: none;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-discount::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-discount:hover {
+            background: linear-gradient(135deg, #d40026 0%, #EB0029 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+            .btn-discount:hover::before {
+                width: 300px;
+                height: 300px;
+            }
+
+        .btn-discount .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+    .table-container {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(235, 0, 41, 0.05);
+        overflow-x: auto;
+        transition: all 0.3s ease;
+    }
+
+    .dark .table-container {
+        background: #1e242b;
+        border-color: rgba(235, 0, 41, 0.1);
+    }
+
+    .table-container:hover {
+        box-shadow: var(--shadow-md);
+    }
+
+    .product-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+        .product-table th {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--foodu-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 1rem 1.25rem;
+            background: #f8fafc;
+            border-bottom: 2px solid #EB0029;
+            white-space: nowrap;
+        }
+
+    .dark .product-table th {
+        background: #2a3038;
+        color: white;
+        border-bottom-color: #EB0029;
+    }
+
+    .product-table td {
+        padding: 1.25rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 15px;
+        color: #4a5568;
+        border-bottom: 1px solid rgba(235, 0, 41, 0.1);
+        vertical-align: middle;
+    }
+
+    .dark .product-table td {
+        color: #cbd5e0;
+        border-bottom-color: rgba(235, 0, 41, 0.15);
+    }
+
+    .product-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .product-table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+        .product-table tbody tr:hover {
+            background: rgba(235, 0, 41, 0.03);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+    .dark .product-table tbody tr:hover {
+        background: rgba(235, 0, 41, 0.1);
+    }
+
+    .product-image {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .product-table tr:hover .product-image {
+        border-color: #EB0029;
+        transform: scale(1.05);
+        box-shadow: var(--shadow-md);
+    }
+
+    .product-name {
+        font-family: 'Oswald', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--foodu-dark);
+        margin: 0;
+    }
+
+    .dark .product-name {
+        color: white;
+    }
+
+    .product-description {
+        font-size: 14px;
+        color: #64748b;
+        margin: 0.25rem 0 0;
+        max-width: 250px;
+        line-height: 1.4;
+    }
+
+    .dark .product-description {
+        color: #94a3b8;
+    }
+
+    .product-price {
+        font-family: 'Oswald', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #EB0029;
+        white-space: nowrap;
+    }
+
+    .product-category {
+        display: inline-block;
+        padding: 0.35rem 1rem;
+        background: rgba(235, 0, 41, 0.1);
+        color: #EB0029;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 20px;
+        white-space: nowrap;
+    }
+
+    .dark .product-category {
+        background: rgba(235, 0, 41, 0.2);
+        color: #ff6b6b;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.5rem 1rem;
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+        .btn-action i {
+            font-size: 16px;
+        }
+
+    .btn-delete {
+        background: rgba(235, 0, 41, 0.1);
+        color: #EB0029;
+    }
+
+        .btn-delete:hover {
+            background: #EB0029;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(235, 0, 41, 0.3);
+        }
+
+    .btn-update {
+        background: rgba(7, 43, 49, 0.1);
+        color: var(--foodu-dark);
+    }
+
+    .dark .btn-update {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .btn-update:hover {
+        background: var(--foodu-dark);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(7, 43, 49, 0.3);
+    }
+
+    .btn-create {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 2rem;
+        background: transparent;
+        color: var(--foodu-dark);
+        font-family: 'Oswald', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: 2px solid #EB0029;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .dark .btn-create {
+        color: white;
+        border-color: #EB0029;
+    }
+
+    .btn-create::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #EB0029, #ff4d4d);
+        transition: left 0.3s ease;
+        z-index: -1;
+    }
+
+    .btn-create:hover {
+        color: white;
+        border-color: transparent;
+    }
+
+        .btn-create:hover::before {
+            left: 0;
+        }
+
+    .btn-create .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .empty-state-icon {
+        font-size: 64px;
+        color: rgba(235, 0, 41, 0.2);
+        margin-bottom: 1rem;
+    }
+
+    .empty-state h3 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 24px;
+        color: var(--foodu-dark);
+        margin-bottom: 0.5rem;
+    }
+
+    .dark .empty-state h3 {
+        color: white;
+    }
+
+    .empty-state p {
+        color: #64748b;
+        margin-bottom: 2rem;
+    }
+
+    .dark .empty-state p {
+        color: #94a3b8;
+    }
+
+    .count-badge {
+        display: inline-block;
+        margin-left: 0.75rem;
+        padding: 0.2rem 0.75rem;
+        background: #EB0029;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 20px;
+    }
+
+    /* Responsive */
+    @@media (max-width: 1024px) {
+        .page-header {
+            padding: 1.25rem;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .page-header .d-flex {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start !important;
+        }
+
+        .btn-discount {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+
+        .btn-action {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 0.75rem;
+        }
+    }
+
+    /* Animasyonlar */
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .product-table tbody tr {
+        animation: fadeIn 0.5s ease forwards;
+        animation-delay: calc(var(--row-index) * 0.05s);
+        opacity: 0;
+    }
+</style>
+
+<div class="page-header">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="page-title">
+                Ürünler
+                <span class="count-badge">@Model.Count</span>
+            </h1>
+        </div>
+        <a href="/Admin/DiscountEmail" class="btn-discount">
+            <span class="material-symbols-outlined">email</span>
+            İndirim Maili Gönder
+        </a>
+    </div>
+</div>
+
+<div class="table-container">
+    @if (Model.Any())
+    {
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Görsel</th>
+                    <th>Ürün Adı</th>
+                    <th>Açıklama</th>
+                    <th>Fiyat</th>
+                    <th>Kategori</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr style="--row-index: @count;">
+                        <td><span class="product-count">@count</span></td>
+                        <td>
+                            <img src="@item.ImageUrl" class="product-image" alt="@item.Name" />
+                        </td>
+                        <td>
+                            <p class="product-name">@item.Name</p>
+                        </td>
+                        <td>
+                            <p class="product-description">@item.Description</p>
+                        </td>
+                        <td>
+                            <span class="product-price">@item.Price ₺</span>
+                        </td>
+                        <td>
+                            <span class="product-category">@item.CategoryName</span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <a href="/Admin/Product/DeleteProduct/@item.Id"
+                                   class="btn-action btn-delete"
+                                   onclick="return confirm('Bu ürünü silmek istediğinize emin misiniz?')">
+                                    <span class="material-symbols-outlined">delete</span>
+                                    Sil
+                                </a>
+                                <a href="/Admin/Product/UpdateProduct/@item.Id" class="btn-action btn-update">
+                                    <span class="material-symbols-outlined">edit</span>
+                                    Güncelle
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <span class="material-symbols-outlined" style="font-size: 64px;">inventory</span>
+            </div>
+            <h3>Henüz Ürün Yok</h3>
+            <p>İlk ürününüzü oluşturarak başlayın.</p>
+            <a href="/Admin/Product/CreateProduct/" class="btn-create">
+                <span class="material-symbols-outlined">add</span>
+                Yeni Ürün Oluştur
+            </a>
+        </div>
+    }
+</div>
+
+@if (Model.Any())
+{
+    <div class="mt-4 text-end">
+        <a href="/Admin/Product/CreateProduct/" class="btn-create">
+            <span class="material-symbols-outlined">add</span>
+            Yeni Ürün Oluştur
+        </a>
+    </div>
+}
+
+<script>
+    // Silme işlemi için gelişmiş onay
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            var href = this.href;
+
+            // Modern confirm dialog
+            if (confirm('Bu ürünü silmek istediğinize emin misiniz? Bu işlem geri alınamaz.')) {
+                window.location.href = href;
+            }
+        });
+    });
+
+    // Tablo satırlarına hover efekti
+    document.querySelectorAll('.product-table tbody tr').forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = 'rgba(235, 0, 41, 0.03)';
+        });
+
+        row.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '';
+        });
+    });
+
+    // Dark mode kontrolü
+    if (document.documentElement.classList.contains('dark')) {
+        // Dark mode spesifik ayarlar
+    }
+</script>

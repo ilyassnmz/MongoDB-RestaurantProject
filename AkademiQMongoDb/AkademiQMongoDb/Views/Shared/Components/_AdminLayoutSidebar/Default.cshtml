@@ -1,39 +1,355 @@
-﻿
-@*
-	Admin Layout Sidebar
+﻿@*
+    Admin Layout Sidebar
 *@
 
-<aside class="flex w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark text-gray-800 dark:text-gray-200">
-    <div class="flex h-full min-h-0 flex-col justify-between p-4">
-        <div class="flex flex-col gap-4">
-            <div class="flex items-center gap-3 px-3 py-2">
-                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-10" data-alt="Abstract blue geometric logo"></div>
-                <div class="flex flex-col">
-                </div>
-            </div>
-            <nav class="flex flex-col gap-2 pt-4">
-                <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
-                    <span class="material-symbols-outlined fill">dashboard</span>
-                    <p class="text-sm font-medium leading-normal">Dashboard</p>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="/Category/Index">
-                    <span class="material-symbols-outlined">list</span>
-                    <p class="text-sm font-medium leading-normal">Kategoriler</p>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="/Admin/Product/Index">
-                    <span class="material-symbols-outlined">bar_chart</span>
-                    <p class="text-sm font-medium leading-normal">Ürünler</p>
-                </a>
-                <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="#">
-                    <span class="material-symbols-outlined">settings</span>
-                    <p class="text-sm font-medium leading-normal">Settings</p>
-                </a>
+<style>
+    :root {
+        --foodu-red: #EB0029;
+        --foodu-dark: #072b31;
+        --foodu-gray: #EBE9E6;
+    }
 
-                <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10" href="/Login/Logout">
-                    <span class="material-symbols-outlined">logout</span>
-                    <p class="text-sm font-medium leading-normal">Çıkış Yap</p>
-                </a>
-            </nav>
+    .sidebar {
+        width: 280px;
+        background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+        border-right: 1px solid rgba(235, 0, 41, 0.1);
+        transition: all 0.3s ease;
+        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .dark .sidebar {
+        background: linear-gradient(180deg, #1a1e24 0%, #15191f 100%);
+        border-right: 1px solid rgba(235, 0, 41, 0.2);
+    }
+
+    .sidebar-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 24px 16px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(235, 0, 41, 0.1);
+    }
+
+    .sidebar-logo-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #EB0029 0%, #ff4d4d 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(235, 0, 41, 0.3);
+    }
+
+        .sidebar-logo-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+    .sidebar-logo-text h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #072b31;
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    .dark .sidebar-logo-text h2 {
+        color: white;
+    }
+
+    .sidebar-logo-text p {
+        font-family: 'Jost', sans-serif;
+        font-size: 12px;
+        color: #EB0029;
+        margin: 0;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    .sidebar-nav {
+        padding: 8px 12px;
+    }
+
+    .sidebar-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        margin: 4px 0;
+        border-radius: 12px;
+        color: #4b5563;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dark .sidebar-nav-item {
+        color: #9ca3af;
+    }
+
+    .sidebar-nav-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, rgba(235, 0, 41, 0.1) 0%, transparent 100%);
+        transition: width 0.3s ease;
+        z-index: 0;
+    }
+
+    .sidebar-nav-item:hover {
+        background: rgba(235, 0, 41, 0.05);
+        color: #EB0029;
+    }
+
+    .dark .sidebar-nav-item:hover {
+        background: rgba(235, 0, 41, 0.15);
+        color: white;
+    }
+
+    .sidebar-nav-item:hover::before {
+        width: 100%;
+    }
+
+    .sidebar-nav-item.active {
+        background: linear-gradient(90deg, rgba(235, 0, 41, 0.1) 0%, rgba(235, 0, 41, 0.02) 100%);
+        color: #EB0029;
+        font-weight: 600;
+        border-left: 3px solid #EB0029;
+    }
+
+    .dark .sidebar-nav-item.active {
+        background: linear-gradient(90deg, rgba(235, 0, 41, 0.2) 0%, rgba(235, 0, 41, 0.05) 100%);
+        color: white;
+    }
+
+    .sidebar-nav-item.active .sidebar-nav-icon {
+        color: #EB0029;
+    }
+
+    .dark .sidebar-nav-item.active .sidebar-nav-icon {
+        color: #EB0029;
+    }
+
+    .sidebar-nav-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        color: #6b7280;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    .dark .sidebar-nav-icon {
+        color: #9ca3af;
+    }
+
+    .sidebar-nav-item:hover .sidebar-nav-icon {
+        color: #EB0029;
+        transform: translateX(2px);
+    }
+
+    .sidebar-nav-text {
+        font-family: 'Jost', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent 0%, rgba(235, 0, 41, 0.2) 50%, transparent 100%);
+        margin: 20px 16px;
+    }
+
+    .sidebar-footer {
+        padding: 20px 16px;
+        border-top: 1px solid rgba(235, 0, 41, 0.1);
+        margin-top: auto;
+    }
+
+    .sidebar-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: rgba(235, 0, 41, 0.03);
+        border-radius: 12px;
+    }
+
+    .sidebar-user-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #EB0029 0%, #ff6b6b 100%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        box-shadow: 0 2px 8px rgba(235, 0, 41, 0.3);
+    }
+
+    .sidebar-user-info {
+        flex: 1;
+    }
+
+    .sidebar-user-name {
+        font-family: 'Oswald', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #072b31;
+        margin: 0;
+    }
+
+    .dark .sidebar-user-name {
+        color: white;
+    }
+
+    .sidebar-user-role {
+        font-family: 'Jost', sans-serif;
+        font-size: 11px;
+        color: #EB0029;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0;
+    }
+
+    .sidebar-logout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 12px;
+        margin-top: 12px;
+        background: transparent;
+        border: 1px solid rgba(235, 0, 41, 0.3);
+        border-radius: 10px;
+        color: #EB0029;
+        font-family: 'Jost', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .sidebar-logout:hover {
+            background: #EB0029;
+            color: white;
+            border-color: #EB0029;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(235, 0, 41, 0.3);
+        }
+
+            .sidebar-logout:hover .sidebar-logout-icon {
+                color: white;
+            }
+
+    .sidebar-logout-icon {
+        font-size: 18px;
+        transition: all 0.3s ease;
+    }
+
+    /* Aktif sayfa için JavaScript yardımı */
+    .sidebar-nav-item[data-active="true"] {
+        background: linear-gradient(90deg, rgba(235, 0, 41, 0.1) 0%, rgba(235, 0, 41, 0.02) 100%);
+        color: #EB0029;
+        font-weight: 600;
+        border-left: 3px solid #EB0029;
+    }
+</style>
+
+<aside class="sidebar">
+    <!-- Logo Bölümü -->
+    <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+            </svg>
+        </div>
+        <div class="sidebar-logo-text">
+            <h2>Foodu</h2>
+            <p>Admin Panel</p>
         </div>
     </div>
+
+    <!-- Navigasyon -->
+    <nav class="sidebar-nav">
+        <a class="sidebar-nav-item" href="/Category/Index" data-page="categories">
+            <span class="material-symbols-outlined sidebar-nav-icon">category</span>
+            <span class="sidebar-nav-text">Kategoriler</span>
+        </a>
+
+        <a class="sidebar-nav-item" href="/Admin/Product/Index" data-page="products">
+            <span class="material-symbols-outlined sidebar-nav-icon">restaurant_menu</span>
+            <span class="sidebar-nav-text">Ürünler</span>
+        </a>
+
+        <!-- İndirim Maili Gönder Butonu (Yeni) -->
+        <a class="sidebar-nav-item" href="/Admin/DiscountEmail" data-page="discount">
+            <span class="material-symbols-outlined sidebar-nav-icon">email</span>
+            <span class="sidebar-nav-text">İndirim Maili</span>
+        </a>
+    </nav>
+
+    <!-- Divider -->
+    <div class="sidebar-divider"></div>
+
+    <!-- Footer Bölümü (Kullanıcı Bilgisi ve Çıkış) -->
+    <div class="sidebar-footer">
+        <div class="sidebar-user">
+            <div class="sidebar-user-avatar">
+                @(ViewBag.fullName?.Substring(0, 1) ?? "A")
+            </div>
+            <div class="sidebar-user-info">
+                <p class="sidebar-user-name">@ViewBag.fullName</p>
+                <p class="sidebar-user-role">Admin</p>
+            </div>
+        </div>
+
+        <a class="sidebar-logout" href="/Login/Logout">
+            <span class="material-symbols-outlined sidebar-logout-icon">logout</span>
+            <span>Çıkış Yap</span>
+        </a>
+    </div>
 </aside>
+
+<script>
+    // Aktif sayfayı işaretleme
+    document.addEventListener('DOMContentLoaded', function() {
+        var currentPath = window.location.pathname.toLowerCase();
+        var navItems = document.querySelectorAll('.sidebar-nav-item');
+
+        navItems.forEach(function(item) {
+            var href = item.getAttribute('href').toLowerCase();
+
+            // Kategoriler sayfası
+            if (href.includes('/category/') && currentPath.includes('/category/')) {
+                item.classList.add('active');
+            }
+            // Ürünler sayfası
+            else if (href.includes('/admin/product/') && currentPath.includes('/admin/product/')) {
+                item.classList.add('active');
+            }
+            // İndirim maili sayfası
+            else if (href.includes('/admin/discountemail') && currentPath.includes('/admin/discountemail')) {
+                item.classList.add('active');
+            }
+            // Aboneler sayfası
+            else if (href.includes('/admin/subscriber/') && currentPath.includes('/admin/subscriber/')) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>

@@ -236,3 +236,8 @@ C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\ob
 C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\obj\Debug\net8.0\ref\AkademiQMongoDb.dll
 C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\Mapster.dll
 C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\Mapster.Core.dll
+C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\MailKit.dll
+C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\MimeKit.dll
+C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\lunap\OneDrive\Masaüstü\MyProjects\AkademiQMongoDb\AkademiQMongoDb\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
