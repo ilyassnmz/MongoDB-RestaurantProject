@@ -3,48 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\areas\\admin\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\views\\default\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\views\\default\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\views\\shared\\components\\_adminlayoutsidebar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\views\\shared\\components\\_adminlayoutsidebar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\areas\\admin\\views\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\areas\\admin\\views\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\areas\\admin\\views\\discountemail\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\areas\\admin\\views\\discountemail\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\views\\shared\\components\\_adminlayoutnavbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\views\\shared\\components\\_adminlayoutnavbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\entities\\subscriber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\entities\\subscriber.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\dtos\\maildtos\\emaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\dtos\\maildtos\\emaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|c:\\users\\lunap\\onedrive\\masa\u00FCst\u00FC\\myprojects\\akademiqmongodb\\akademiqmongodb\\settings\\emailsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FBD439F2-AA4B-4FB1-9747-CD02C17E31D0}|AkademiQMongoDb\\AkademiQMongoDb.csproj|solutionrelative:akademiqmongodb\\settings\\emailsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,151 +14,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1150,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Default\\Index.cshtml",
               "RelativeDocumentMoniker": "AkademiQMongoDb\\Views\\Default\\Index.cshtml",
               "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Default\\Index.cshtml",
               "RelativeToolTip": "AkademiQMongoDb\\Views\\Default\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJEAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-20T14:09:59.51Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAANcBAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T14:33:00.714Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Category\\Index.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Views\\Category\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Category\\Index.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Views\\Category\\Index.cshtml",
-              "ViewState": "AgIAAPkBAAAAAAAAAAAAAAYCAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T16:39:19.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutSidebar\\Default.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutSidebar\\Default.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutSidebar\\Default.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutSidebar\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T15:09:36.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutNavbar\\Default.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutNavbar\\Default.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutNavbar\\Default.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Views\\Shared\\Components\\_AdminLayoutNavbar\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALcBAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T14:57:27.433Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\DiscountEmail\\Index.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Areas\\Admin\\Views\\DiscountEmail\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\DiscountEmail\\Index.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Areas\\Admin\\Views\\DiscountEmail\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMgBAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T14:46:17.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\appsettings.json",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\appsettings.json",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\appsettings.json",
-              "RelativeToolTip": "AkademiQMongoDb\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-20T14:41:09.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\Index.cshtml",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Areas\\Admin\\Views\\Index.cshtml",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Areas\\Admin\\Views\\Index.cshtml",
-              "RelativeToolTip": "AkademiQMongoDb\\Areas\\Admin\\Views\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-20T14:32:29.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Subscriber.cs",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Entities\\Subscriber.cs",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Entities\\Subscriber.cs",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Entities\\Subscriber.cs",
-              "RelativeToolTip": "AkademiQMongoDb\\Entities\\Subscriber.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:22:58.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EmailDto.cs",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\DTOs\\MailDtos\\EmailDto.cs",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\DTOs\\MailDtos\\EmailDto.cs",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\DTOs\\MailDtos\\EmailDto.cs",
-              "RelativeToolTip": "AkademiQMongoDb\\DTOs\\MailDtos\\EmailDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:20:55.452Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EmailSetting.cs",
-              "DocumentMoniker": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Settings\\EmailSetting.cs",
-              "RelativeDocumentMoniker": "AkademiQMongoDb\\Settings\\EmailSetting.cs",
-              "ToolTip": "C:\\Users\\lunap\\OneDrive\\Masa\u00FCst\u00FC\\MyProjects\\AkademiQMongoDb\\AkademiQMongoDb\\Settings\\EmailSetting.cs",
-              "RelativeToolTip": "AkademiQMongoDb\\Settings\\EmailSetting.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:20:22Z",
               "EditorCaption": ""
             },
             {
