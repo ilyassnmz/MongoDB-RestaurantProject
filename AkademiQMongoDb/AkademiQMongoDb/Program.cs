@@ -1,3 +1,4 @@
+using AkademiQMongoDb.Services.AdminServices;
 using AkademiQMongoDb.Services.CategoryServices;
 using AkademiQMongoDb.Services.CategoryServices;
 using AkademiQMongoDb.Services.ProductServices;
@@ -12,6 +13,7 @@ builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(na
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 builder.Services.AddSingleton<IDatabaseSettings>(sp=>
 {
